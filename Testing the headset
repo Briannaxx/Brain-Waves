@@ -1,0 +1,36 @@
+#include "Brain.h"
+
+Brain brain(Serial);
+
+Void setUp()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  if (brain.update())
+  {
+     Serial.println(brain.readErrors());
+     Serial.println(brain.read CSV());
+  }
+}
+
+
+
+
+
+//We should look into the power because were not giving the headset power through the arduino just through
+//the batteries it might have something to do with why were not recieving input
+
+// Also let me double check that I didn't create any solder bridges when soldering because its very possible
+//since soldering sucks 
+
+//Also make sure I grounded it to the right place because i put it where the one website said to but the other
+// Says to " Solder another wire to ground using the large solder pad where the batteries ground connection 
+// is" 
+
+// Make sure batteries are good because we know our luck with them 
+
+//I know i soldered the recieving pin to the right spot we just have to check for solder bridges and also 
+// solder ground to the right spot bc idk if I did or not 
