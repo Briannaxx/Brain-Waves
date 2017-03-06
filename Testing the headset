@@ -5,6 +5,7 @@ Brain brain(Serial);
 Void setUp()
 {
   Serial.begin(9600);
+  pinMode (PIN_3, OUTPUT);
 }
 
 void loop()
@@ -13,24 +14,22 @@ void loop()
   {
      Serial.println(brain.readErrors());
      Serial.println(brain.read CSV());
+     
+     //Makes the light turn on if you are concentrated on something and turns off if its anything below that
+     // which is alpha (relaxed/meditation) anything above that is Gamma which is Multi-sensory processing 
+     // The numbers aren't for sure we can change them if out data set is giving us different values i got
+     //these values from: http://www.frontiernerds.com/brain-hack 
+     
+     
+     if(brain.read CSV()<30 && brain.read CSV()>13)
+     {
+         digitalWrite(PIN_3, HIGH);
+     }
+     else
+     {
+        digitalWrite(PIN_3, LOW);
+     }
   }
 }
 
 
-
-
-
-//We should look into the power because were not giving the headset power through the arduino just through
-//the batteries it might have something to do with why were not recieving input
-
-// Also let me double check that I didn't create any solder bridges when soldering because its very possible
-//since soldering sucks 
-
-//Also make sure I grounded it to the right place because i put it where the one website said to but the other
-// Says to " Solder another wire to ground using the large solder pad where the batteries ground connection 
-// is" 
-
-// Make sure batteries are good because we know our luck with them 
-
-//I know i soldered the recieving pin to the right spot we just have to check for solder bridges and also 
-// solder ground to the right spot bc idk if I did or not 
